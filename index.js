@@ -1,52 +1,21 @@
-function verificar (){
-    var data = new Date()
-    var ano = data.getFullYear()
-    var fano = document.getElementById ('txtano')
-    var res= document.querySelector('div#res') // div + nome 
-    if ( fano.value.length == 0 || fano.value> ano){
-        window.alert('Verifique os dados e tente novamente.')
-    } else {
-        var fsex =  document.getElementsByName('radsex')
-        var idade = ano - Number(fano.value)
-        var genero = ''
-        var img = document.createElement ('img') // criar imagem por Js
-        img.setAttribute('id','foto') // nomear o id por JS
-        if(fsex[0].checked){
-            genero = 'Homem'
-            if (idade >=0 && idade < 10) { 
-                //Criança    
-                img.setAttribute ('src','fotobebe-m.png')          
-            } else if (idade < 21){ // já considerou a idade anterior no if
-             // jovem
-             img.setAttribute('src', 'fotojovem-m.png')
-           }else if (idade <50 ){
-             // Adulto
-             img.setAttribute('src','fotojovem-m.png')
-               } else { 
-              //Idoso  
-              img.setAttribute('src','fotoidoso-m.png') 
-               }
-             } else if (fsex[1].checked){
-            genero = 'Mulher'
-            if (idade >=0 && idade < 10) { 
-             //Criança 
-             img.setAttribute ('src','fotobebe-f.png')             
-         } else if (idade < 21){ // já considerou a idade anterior no if
-          // jovem
-          img.setAttribute('src','fotojovem-f.png')
-        }else if (idade <50 ){
-          // Adulto
-          img.setAttribute('src','fotojovem-f.png')
-            } else { 
-           //Idoso 
-           img.setAttribute('src','fotoidosa-f.png')  
-            }
-        }
-        res.style.textAlign = 'center'
-        res.innerHTML = `Detectamos ${genero} com ${idade} anos.`
-        res.appendChild(img)
+function tabuada() {
+    let num = document.getElementById ('txtn')
+    let tab = document.getElementById ('seltab')
+    if(num.value.length == 0) {
+       alert('Por favor, digite um número!')
         
-    }
- }
- 
- 
+     } else {
+        let n = Number(num.value)
+        let c = 1
+        tab.innerHTML = ""
+        while ( c <= 10 ){
+            let item = document.createElement ('option')
+            item.text = `${n} x ${c} = ${n*c}`
+            item.value = `tab${c}`
+            tab.appendChild(item)
+            c++
+        }
+      }
+     
+    
+     }
